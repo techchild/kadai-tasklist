@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
-  before_action :require_user_logged_in
+  before_action :require_user_logged_in, only: [:show, :new, :create, :edit, :update, :destroy]
   before_action :correct_user, only: [:destroy]
   def index
     # loginしてたら
@@ -9,8 +9,6 @@ class TasksController < ApplicationController
       # ログインページに飛ばせる
     if logged_in?
       @tasks = current_user.tasks.order(id: :desc).page(params[:page])
-    else
-      redirect_to login_url
     end
   end
   
