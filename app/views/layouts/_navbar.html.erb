@@ -1,0 +1,17 @@
+<header class="mb-4">
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">Tasklist</a>
+
+    <div>
+      <ul>
+        <% if logged_in? %>
+            ログインネーム=<%= current_user.name %></a>
+            <ul><%= link_to 'Logout', logout_path, method: :delete %></ul>
+        <% else %>
+          <li class="nav-item"><%= link_to 'Signup', signup_path %></li>
+          <li class="nav-item"><%= link_to 'Login', login_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+</header>
